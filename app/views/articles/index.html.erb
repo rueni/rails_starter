@@ -1,21 +1,18 @@
 <h1>Listing articles</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th></th>
-  </tr>
-
-  <% @articles.each do |article| %>
+<table id="articles">
+  <thead>
     <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Destroy', article_path(article),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+      <th>Title</th>
+      <th>Text</th>
+      <th></th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <%= render partial: 'article', collection: @articles %>
+  </tbody>
 </table>
+
+<div id="new-article">
+  <%= link_to 'New article', new_article_path, id:"new_article", remote:true %>
+</div>

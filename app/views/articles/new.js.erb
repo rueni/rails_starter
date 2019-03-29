@@ -1,0 +1,12 @@
+$("#new_article")
+  .on("ajax:success", function(event) {
+    [data, status, xhr] = event.detail
+    if (status == 'OK') {
+      $('#new_article').hide().parent().append('<%= j render("form") %>')
+    } else {
+      console.log('error');
+    }
+  })
+  .on("ajax:error", function(event) {
+      console.log('error');
+  })
